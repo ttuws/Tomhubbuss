@@ -1,0 +1,169 @@
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Rain-Design/Unnamed/main/Library.lua'))()
+
+local Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/Rain-Design/Unnamed/main/Library.lua'))()
+Library.Theme = "Dark"
+local Flags = Library.Flags
+
+local Window = Library:Window({
+   Text = "Tom Hub | Free Premium | Busdiver VietNam 2"
+})
+
+local Tab = Window:Tab({
+   Text = "Main"
+})
+
+local Section = Tab:Section({
+   Text = "Spam Car"
+})
+
+Section:Button({
+   Text = "Car Luxury",
+   Callback = function()
+       warn("Killed All")
+       local player = game.Players.LocalPlayer
+        local playerGui = player:WaitForChild("PlayerGui")
+        local luxuryGui = playerGui:WaitForChild("luxury")
+        local bgFrame = luxuryGui:WaitForChild("BG")
+        bgFrame.Visible = true
+   end
+})
+
+Section:Button({
+   Text = "Emergency Car Spawner",
+   Callback = function()
+       warn("Killed All")
+       local player = game.Players.LocalPlayer
+        local playerGui = player:WaitForChild("PlayerGui")
+        local luxuryGui = playerGui:WaitForChild("emergency")
+        local bgFrame = luxuryGui:WaitForChild("BG")
+        bgFrame.Visible = true
+   end
+})
+
+Section:Button({
+   Text = "Police Car Spawner",
+   Callback = function()
+   local player = game.Players.LocalPlayer
+        local playerGui = player:WaitForChild("PlayerGui")
+        local luxuryGui = playerGui:WaitForChild("Police")
+        local bgFrame = luxuryGui:WaitForChild("BG")
+        bgFrame.Visible = true
+   end
+})
+
+local Tab2 = Window:Tab({
+   Text = "Esp"
+})
+     
+local Section2 = Tab2:Section({
+   Text = "Esp"
+})
+
+Section2:Toggle({
+   Text = "Esp Box+Hp",
+   Callback = function(bool)
+       warn(bool)
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/Blissful4992/ESPs/main/2D%20Box%20ESP/ESP%20%2B%20Health%20Bars.lua"))()
+   end
+})
+
+Section2:Toggle({
+   Text = "Esp Name",
+   Callback = function(bool)
+       warn(bool)
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/Eazvy/UILibs/main/ESP/Name/Example"))()
+   end
+})
+
+Section2:Toggle({
+   Text = "Esp 7 color",
+   Callback = function(bool)
+       warn(bool)
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/Eazvy/UILibs/main/ESP/Cornerbox/Example"))()
+   end
+})
+
+local Tab3 = Window:Tab({
+   Text = "Setting"
+})
+
+local Section3 = Tab3:Section({
+   Text = "Setting"
+})
+
+Section3:Button({
+   Text = "Antilag",
+   Callback = function()
+       warn("Teleported")
+       local ToDisable = {
+	Textures = true,
+	VisualEffects = true,
+	Parts = true,
+	Particles = true,
+	Sky = true
+}
+ 
+local ToEnable = {
+	FullBright = false
+}
+ 
+local Stuff = {}
+ 
+for _, v in next, game:GetDescendants() do
+	if ToDisable.Parts then
+		if v:IsA("Part") or v:IsA("Union") or v:IsA("BasePart") then
+			v.Material = Enum.Material.SmoothPlastic
+			table.insert(Stuff, 1, v)
+		end
+	end
+ 
+	if ToDisable.Particles then
+		if v:IsA("ParticleEmitter") or v:IsA("Smoke") or v:IsA("Explosion") or v:IsA("Sparkles") or v:IsA("Fire") then
+			v.Enabled = false
+			table.insert(Stuff, 1, v)
+		end
+	end
+ 
+	if ToDisable.VisualEffects then
+		if v:IsA("BloomEffect") or v:IsA("BlurEffect") or v:IsA("DepthOfFieldEffect") or v:IsA("SunRaysEffect") then
+			v.Enabled = false
+			table.insert(Stuff, 1, v)
+		end
+	end
+ 
+	if ToDisable.Textures then
+		if v:IsA("Decal") or v:IsA("Texture") then
+			v.Texture = ""
+			table.insert(Stuff, 1, v)
+		end
+	end
+ 
+	if ToDisable.Sky then
+		if v:IsA("Sky") then
+			v.Parent = nil
+			table.insert(Stuff, 1, v)
+		end
+	end
+end
+ 
+game:GetService("TestService"):Message("Effects Disabler Script : Successfully disabled "..#Stuff.." assets / effects. Settings :")
+ 
+for i, v in next, ToDisable do
+	print(tostring(i)..": "..tostring(v))
+end
+ 
+if ToEnable.FullBright then
+    local Lighting = game:GetService("Lighting")
+ 
+    Lighting.FogColor = Color3.fromRGB(255, 255, 255)
+    Lighting.FogEnd = math.huge
+    Lighting.FogStart = math.huge
+    Lighting.Ambient = Color3.fromRGB(255, 255, 255)
+    Lighting.Brightness = 5
+    Lighting.ColorShift_Bottom = Color3.fromRGB(255, 255, 255)
+    Lighting.ColorShift_Top = Color3.fromRGB(255, 255, 255)
+    Lighting.OutdoorAmbient = Color3.fromRGB(255, 255, 255)
+    Lighting.Outlines = true
+end
+   end
+})
